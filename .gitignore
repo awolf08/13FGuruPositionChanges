@@ -2,6 +2,3 @@ __pycache__/
 *.pyc
 .DS_Store
 reports/raw/
-reports/latest_changes.csv
-reports/latest_changes.md
-reports/latest_chart.html
