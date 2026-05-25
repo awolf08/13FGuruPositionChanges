@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Warren Buffett",
+    "manager": "Berkshire Hathaway Inc",
+    "cik": "0001067983"
+  },
+  {
+    "name": "Bill Ackman",
+    "manager": "Pershing Square Capital Management, L.P.",
+    "cik": "0001336528"
+  },
+  {
+    "name": "Michael Burry",
+    "manager": "Scion Asset Management, LLC",
+    "cik": "0001649339"
+  },
+  {
+    "name": "David Tepper",
+    "manager": "Appaloosa LP",
+    "cik": "0001656456"
+  },
+  {
+    "name": "Stanley Druckenmiller",
+    "manager": "Duquesne Family Office LLC",
+    "cik": "0001536411"
+  },
+  {
+    "name": "Seth Klarman",
+    "manager": "Baupost Group LLC",
+    "cik": "0001061768"
+  },
+  {
+    "name": "David Einhorn",
+    "manager": "Greenlight Capital Inc",
+    "cik": "0001079114"
+  },
+  {
+    "name": "Ray Dalio",
+    "manager": "Bridgewater Associates, LP",
+    "cik": "0001350694"
+  },
+  {
+    "name": "Dan Loeb",
+    "manager": "Third Point LLC",
+    "cik": "0001040273"
+  },
+  {
+    "name": "Chase Coleman",
+    "manager": "Tiger Global Management LLC",
+    "cik": "0001167483"
+  },
+  {
+    "name": "Philippe Laffont",
+    "manager": "Coatue Management LLC",
+    "cik": "0001135730"
+  },
+  {
+    "name": "Cathie Wood",
+    "manager": "ARK Investment Management LLC",
+    "cik": "0001697748"
+  },
+  {
+    "name": "George Soros",
+    "manager": "Soros Fund Management LLC",
+    "cik": "0001029160"
+  },
+  {
+    "name": "Carl Icahn",
+    "manager": "Icahn Carl C",
+    "cik": "0000921669"
+  }
+]
