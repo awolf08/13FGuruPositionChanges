@@ -513,11 +513,23 @@ def write_html_chart(path: Path, groups: list[dict[str, object]]) -> None:
         ".mover-label { margin: 0 0 4px; font-size: 11px; color: #6b7280; text-transform: uppercase; }",
         ".mover-name { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }",
         ".mover-value { margin-top: 3px; font-size: 12px; color: #374151; font-variant-numeric: tabular-nums; }",
+        ".summary-head { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 14px; }",
+        ".summary-head p { margin: 4px 0 0; color: #6b7280; font-size: 13px; }",
+        ".top-list { display: grid; gap: 10px; }",
+        ".top-row { display: grid; grid-template-columns: 44px minmax(0, 1fr) 92px 82px; gap: 12px; align-items: center; border: 1px solid #e2e6ee; border-radius: 6px; padding: 10px 12px; }",
+        ".rank { color: #6b7280; font-size: 12px; font-weight: 800; font-variant-numeric: tabular-nums; }",
+        ".top-name { font-size: 13px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }",
+        ".top-meta { margin-top: 4px; color: #6b7280; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }",
+        ".bar-track { height: 9px; margin-top: 7px; background: #e8ecf2; border-radius: 999px; overflow: hidden; }",
+        ".bar-fill { height: 100%; background: linear-gradient(90deg, #1f9d55, #2563eb); border-radius: 999px; }",
+        ".top-pct, .top-holders { text-align: right; font-variant-numeric: tabular-nums; }",
+        ".top-pct { font-size: 13px; font-weight: 800; }",
+        ".top-holders { color: #6b7280; font-size: 12px; }",
         ".empty { color: #6b7280; font-size: 13px; }",
         ".warning { color: #9a3412; font-size: 13px; margin: 8px 0 0; }",
         "@media (max-width: 960px) { .pies { grid-template-columns: 1fr; } }",
         "@media (max-width: 760px) { .movers { grid-template-columns: repeat(2, minmax(0, 1fr)); } }",
-        "@media (max-width: 640px) { body { padding: 14px; } .piebox { grid-template-columns: 1fr; } .pie { width: min(100%, 260px); } .movers { grid-template-columns: 1fr; } }",
+        "@media (max-width: 640px) { body { padding: 14px; } .piebox { grid-template-columns: 1fr; } .pie { width: min(100%, 260px); } .movers { grid-template-columns: 1fr; } .summary-head { display: block; } .top-row { grid-template-columns: 34px minmax(0, 1fr); } .top-pct, .top-holders { text-align: left; grid-column: 2; } }",
         "</style>",
         "</head>",
         "<body><main>",
@@ -589,6 +601,33 @@ def write_html_chart(path: Path, groups: list[dict[str, object]]) -> None:
             f'<div class="mover-value"><i class="swatch" style="background:{color}"></i> {html.escape(action)} · {fmt_pct(prev_pct)} → {fmt_pct(cur_pct)} ({pct_point_text(delta)})</div>'
             f'</div>'
         )
+
+    def top_combined_current_positions() -> list[dict[str, object]]:
+        positions: dict[str, dict[str, object]] = {}
+        for group in groups:
+            if group.get("error"):
+                continue
+            investor = str(group["investor"])
+            for row in group["portfolio_rows"]:
+                issuer = str(row["issuer"])
+                current_pct = float(row.get("current_portfolio_pct", 0))
+                current_value = int(row.get("current_value_usd", 0))
+                if not issuer or current_pct <= 0:
+                    continue
+                record = positions.setdefault(
+                    issuer,
+                    {
+                        "issuer": issuer,
+                        "current_portfolio_pct": 0.0,
+                        "current_value_usd": 0,
+                        "holders": set(),
+                    },
+                )
+                record["current_portfolio_pct"] = float(record["current_portfolio_pct"]) + current_pct
+                record["current_value_usd"] = int(record["current_value_usd"]) + current_value
+                record["holders"].add(investor)
+
+        return sorted(positions.values(), key=lambda row: float(row["current_portfolio_pct"]), reverse=True)[:10]
 
     for group in groups:
         investor = html.escape(str(group["investor"]))
@@ -673,6 +712,46 @@ def write_html_chart(path: Path, groups: list[dict[str, object]]) -> None:
         if len(rows) > len(visible):
             lines.append(f'<p class="meta">Pie uses top {len(visible)} changed positions by portfolio weight. CSV contains all rows.</p>')
         lines.append("</section>")
+
+    top_positions = top_combined_current_positions()
+    if top_positions:
+        max_pct = max(float(row["current_portfolio_pct"]) for row in top_positions)
+        lines.extend(
+            [
+                '<section class="summary">',
+                '<div class="summary-head">',
+                "<div>",
+                "<h2>Combined Latest Portfolio Weight Top 10</h2>",
+                "<p>Each row sums the latest 13F portfolio weight for the same issuer across all tracked investors.</p>",
+                "</div>",
+                f'<p>{len([group for group in groups if not group.get("error")])} investors included</p>',
+                "</div>",
+                '<div class="top-list">',
+            ]
+        )
+        for rank, row in enumerate(top_positions, 1):
+            issuer = html.escape(str(row["issuer"]))
+            current_pct = float(row["current_portfolio_pct"])
+            current_value = int(row["current_value_usd"])
+            holders = sorted(str(holder) for holder in row["holders"])
+            width = 0 if max_pct <= 0 else max(3.0, current_pct / max_pct * 100)
+            lines.extend(
+                [
+                    '<div class="top-row">',
+                    f'<div class="rank">#{rank}</div>',
+                    "<div>",
+                    f'<div class="top-name" title="{issuer}">{issuer}</div>',
+                    f'<div class="top-meta" title="{html.escape("; ".join(holders))}">{html.escape("; ".join(holders))}</div>',
+                    '<div class="bar-track">',
+                    f'<div class="bar-fill" style="width:{width:.2f}%"></div>',
+                    "</div>",
+                    "</div>",
+                    f'<div class="top-pct">{fmt_pct(current_pct)}</div>',
+                    f'<div class="top-holders">{len(holders)} holders<br>${format_num(current_value)}</div>',
+                    "</div>",
+                ]
+            )
+        lines.extend(["</div>", "</section>"])
 
     lines.extend(["</main></body>", "</html>"])
     path.parent.mkdir(parents=True, exist_ok=True)

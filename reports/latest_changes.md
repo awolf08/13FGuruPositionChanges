@@ -1,6 +1,6 @@
 # Latest 13F Guru Changes
 
-Generated: 2026-05-25 17:36 UTC
+Generated: 2026-05-26 05:12 UTC
 
 Note: 13F reports are delayed disclosures and usually omit shorts, many non-US holdings, cash, bonds, and some derivatives.
 
@@ -63,7 +63,7 @@ Previous: 2025-12-31 filed 2026-02-17 (13F-HR, 0001172661-26-001091)
 Current: 2025-09-30 filed 2025-11-03 (13F-HR, 0001649339-25-000007)
 Previous: 2025-06-30 filed 2025-08-14 (13F-HR, 0001879202-25-000038)
 
-Warning: latest 13F report date is 237 days old. This manager may have stopped filing, changed entity, or delayed filings.
+Warning: latest 13F report date is 238 days old. This manager may have stopped filing, changed entity, or delayed filings.
 
 | Action | Issuer | Security | Shares Change | Previous | Current | % Change | Value ($) |
 |---|---|---|---:|---:|---:|---:|---:|
@@ -266,7 +266,7 @@ Previous: 2025-12-31 filed 2026-02-13 (13F-HR, 0001061768-26-000005)
 Current: 2023-12-31 filed 2024-02-14 (13F-HR, 0001172661-24-001512)
 Previous: 2023-09-30 filed 2023-11-14 (13F-HR, 0001172661-23-004012)
 
-Warning: latest 13F report date is 876 days old. This manager may have stopped filing, changed entity, or delayed filings.
+Warning: latest 13F report date is 877 days old. This manager may have stopped filing, changed entity, or delayed filings.
 
 | Action | Issuer | Security | Shares Change | Previous | Current | % Change | Value ($) |
 |---|---|---|---:|---:|---:|---:|---:|

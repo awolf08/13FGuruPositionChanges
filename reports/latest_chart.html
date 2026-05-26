@@ -29,16 +29,28 @@ h2 { margin: 0; font-size: 18px; }
 .mover-label { margin: 0 0 4px; font-size: 11px; color: #6b7280; text-transform: uppercase; }
 .mover-name { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mover-value { margin-top: 3px; font-size: 12px; color: #374151; font-variant-numeric: tabular-nums; }
+.summary-head { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 14px; }
+.summary-head p { margin: 4px 0 0; color: #6b7280; font-size: 13px; }
+.top-list { display: grid; gap: 10px; }
+.top-row { display: grid; grid-template-columns: 44px minmax(0, 1fr) 92px 82px; gap: 12px; align-items: center; border: 1px solid #e2e6ee; border-radius: 6px; padding: 10px 12px; }
+.rank { color: #6b7280; font-size: 12px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.top-name { font-size: 13px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.top-meta { margin-top: 4px; color: #6b7280; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { height: 9px; margin-top: 7px; background: #e8ecf2; border-radius: 999px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #1f9d55, #2563eb); border-radius: 999px; }
+.top-pct, .top-holders { text-align: right; font-variant-numeric: tabular-nums; }
+.top-pct { font-size: 13px; font-weight: 800; }
+.top-holders { color: #6b7280; font-size: 12px; }
 .empty { color: #6b7280; font-size: 13px; }
 .warning { color: #9a3412; font-size: 13px; margin: 8px 0 0; }
 @media (max-width: 960px) { .pies { grid-template-columns: 1fr; } }
 @media (max-width: 760px) { .movers { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 640px) { body { padding: 14px; } .piebox { grid-template-columns: 1fr; } .pie { width: min(100%, 260px); } .movers { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { body { padding: 14px; } .piebox { grid-template-columns: 1fr; } .pie { width: min(100%, 260px); } .movers { grid-template-columns: 1fr; } .summary-head { display: block; } .top-row { grid-template-columns: 34px minmax(0, 1fr); } .top-pct, .top-holders { text-align: left; grid-column: 2; } }
 </style>
 </head>
 <body><main>
 <h1>13F Guru Position Changes</h1>
-<p class="note">Generated 2026-05-25 17:36 UTC. Pie slices are total 13F portfolio weight. Positions below 1% are grouped as Other.</p>
+<p class="note">Generated 2026-05-26 05:12 UTC. Pie slices are total 13F portfolio weight. Positions below 1% are grouped as Other.</p>
 <div class="legend">
 <span><i class="swatch" style="background:#1f9d55"></i>NEW</span>
 <span><i class="swatch" style="background:#2563eb"></i>ADD</span>
@@ -356,7 +368,7 @@ h2 { margin: 0; font-size: 18px; }
 <section>
 <h2>Michael Burry - Scion Asset Management, LLC</h2>
 <p class="meta">Current 2025-09-30 filed 2025-11-03; previous 2025-06-30 filed 2025-08-14.</p>
-<p class="warning">Latest 13F report date is 237 days old.</p>
+<p class="warning">Latest 13F report date is 238 days old.</p>
 <div class="movers">
 <div class="mover"><p class="mover-label">最大加仓</p><div class="mover-name" title="LULULEMON ATHLETICA INC">LULULEMON ATHLETICA INC</div><div class="mover-value"><i class="swatch" style="background:#2563eb"></i> ADD · 2.05% → 1.29% (-0.77 pp)</div></div>
 <div class="mover"><p class="mover-label">最大减仓</p><div class="mover-name">None</div><div class="mover-value">-</div></div>
@@ -1065,7 +1077,7 @@ h2 { margin: 0; font-size: 18px; }
 <section>
 <h2>David Einhorn - Greenlight Capital Inc</h2>
 <p class="meta">Current 2023-12-31 filed 2024-02-14; previous 2023-09-30 filed 2023-11-14.</p>
-<p class="warning">Latest 13F report date is 876 days old.</p>
+<p class="warning">Latest 13F report date is 877 days old.</p>
 <div class="movers">
 <div class="mover"><p class="mover-label">最大加仓</p><div class="mover-name" title="KYNDRYL HLDGS INC">KYNDRYL HLDGS INC</div><div class="mover-value"><i class="swatch" style="background:#2563eb"></i> ADD · 4.79% → 6.45% (+1.66 pp)</div></div>
 <div class="mover"><p class="mover-label">最大减仓</p><div class="mover-name" title="CONSOL ENERGY INC NEW">CONSOL ENERGY INC NEW</div><div class="mover-value"><i class="swatch" style="background:#d97706"></i> REDUCE · 14.33% → 10.34% (-3.99 pp)</div></div>
@@ -2523,6 +2535,137 @@ h2 { margin: 0; font-size: 18px; }
 </div>
 </div>
 </div>
+</div>
+</div>
+</section>
+<section class="summary">
+<div class="summary-head">
+<div>
+<h2>Combined Latest Portfolio Weight Top 10</h2>
+<p>Each row sums the latest 13F portfolio weight for the same issuer across all tracked investors.</p>
+</div>
+<p>14 investors included</p>
+</div>
+<div class="top-list">
+<div class="top-row">
+<div class="rank">#1</div>
+<div>
+<div class="top-name" title="AMAZON COM INC">AMAZON COM INC</div>
+<div class="top-meta" title="Bill Ackman; Chase Coleman; Dan Loeb; David Tepper; George Soros; Philippe Laffont; Ray Dalio; Seth Klarman">Bill Ackman; Chase Coleman; Dan Loeb; David Tepper; George Soros; Philippe Laffont; Ray Dalio; Seth Klarman</div>
+<div class="bar-track">
+<div class="bar-fill" style="width:100.00%"></div>
+</div>
+</div>
+<div class="top-pct">87.98%</div>
+<div class="top-holders">8 holders<br>$8,743,250,775,000</div>
+</div>
+<div class="top-row">
+<div class="rank">#2</div>
+<div>
+<div class="top-name" title="PALANTIR TECHNOLOGIES INC">PALANTIR TECHNOLOGIES INC</div>
+<div class="top-meta" title="Michael Burry; Ray Dalio">Michael Burry; Ray Dalio</div>
+<div class="bar-track">
+<div class="bar-fill" style="width:75.16%"></div>
+</div>
+</div>
+<div class="top-pct">66.12%</div>
+<div class="top-holders">2 holders<br>$930,851,048,000</div>
+</div>
+<div class="top-row">
+<div class="rank">#3</div>
+<div>
+<div class="top-name" title="Icahn Enterprises LP">Icahn Enterprises LP</div>
+<div class="top-meta" title="Carl Icahn">Carl Icahn</div>
+<div class="bar-track">
+<div class="bar-fill" style="width:55.12%"></div>
+</div>
+</div>
+<div class="top-pct">48.49%</div>
+<div class="top-holders">1 holders<br>$4,147,974,070,000</div>
+</div>
+<div class="top-row">
+<div class="rank">#4</div>
+<div>
+<div class="top-name" title="ALPHABET INC">ALPHABET INC</div>
+<div class="top-meta" title="Bill Ackman; Chase Coleman; Dan Loeb; David Tepper; George Soros; Philippe Laffont; Ray Dalio; Seth Klarman; Warren Buffett">Bill Ackman; Chase Coleman; Dan Loeb; David Tepper; George Soros; Philippe Laffont; Ray Dalio; Seth Klarman; Warren Buffett</div>
+<div class="bar-track">
+<div class="bar-fill" style="width:54.65%"></div>
+</div>
+</div>
+<div class="top-pct">48.08%</div>
+<div class="top-holders">9 holders<br>$22,743,105,656,000</div>
+</div>
+<div class="top-row">
+<div class="rank">#5</div>
+<div>
+<div class="top-name" title="NVIDIA CORPORATION">NVIDIA CORPORATION</div>
+<div class="top-meta" title="Chase Coleman; Dan Loeb; David Tepper; George Soros; Michael Burry; Philippe Laffont; Ray Dalio">Chase Coleman; Dan Loeb; David Tepper; George Soros; Michael Burry; Philippe Laffont; Ray Dalio</div>
+<div class="bar-track">
+<div class="bar-fill" style="width:43.31%"></div>
+</div>
+</div>
+<div class="top-pct">38.10%</div>
+<div class="top-holders">7 holders<br>$4,681,056,526,000</div>
+</div>
+<div class="top-row">
+<div class="rank">#6</div>
+<div>
+<div class="top-name" title="TAIWAN SEMICONDUCTOR MANUFAC">TAIWAN SEMICONDUCTOR MANUFAC</div>
+<div class="top-meta" title="Chase Coleman; Dan Loeb; David Tepper; George Soros; Philippe Laffont; Ray Dalio">Chase Coleman; Dan Loeb; David Tepper; George Soros; Philippe Laffont; Ray Dalio</div>
+<div class="bar-track">
+<div class="bar-fill" style="width:40.92%"></div>
+</div>
+</div>
+<div class="top-pct">36.00%</div>
+<div class="top-holders">6 holders<br>$6,226,903,808,000</div>
+</div>
+<div class="top-row">
+<div class="rank">#7</div>
+<div>
+<div class="top-name" title="META PLATFORMS INC">META PLATFORMS INC</div>
+<div class="top-meta" title="Bill Ackman; Chase Coleman; Dan Loeb; David Tepper; George Soros; Philippe Laffont; Ray Dalio">Bill Ackman; Chase Coleman; Dan Loeb; David Tepper; George Soros; Philippe Laffont; Ray Dalio</div>
+<div class="bar-track">
+<div class="bar-fill" style="width:36.39%"></div>
+</div>
+</div>
+<div class="top-pct">32.01%</div>
+<div class="top-holders">7 holders<br>$5,385,203,948,000</div>
+</div>
+<div class="top-row">
+<div class="rank">#8</div>
+<div>
+<div class="top-name" title="GREEN BRICK PARTNERS INC">GREEN BRICK PARTNERS INC</div>
+<div class="top-meta" title="David Einhorn">David Einhorn</div>
+<div class="bar-track">
+<div class="bar-fill" style="width:32.88%"></div>
+</div>
+</div>
+<div class="top-pct">28.92%</div>
+<div class="top-holders">1 holders<br>$592,369,623,000</div>
+</div>
+<div class="top-row">
+<div class="rank">#9</div>
+<div>
+<div class="top-name" title="CVR Energy Inc">CVR Energy Inc</div>
+<div class="top-meta" title="Carl Icahn">Carl Icahn</div>
+<div class="bar-track">
+<div class="bar-fill" style="width:31.84%"></div>
+</div>
+</div>
+<div class="top-pct">28.01%</div>
+<div class="top-holders">1 holders<br>$2,395,943,093,000</div>
+</div>
+<div class="top-row">
+<div class="rank">#10</div>
+<div>
+<div class="top-name" title="MICROSOFT CORP">MICROSOFT CORP</div>
+<div class="top-meta" title="Bill Ackman; Chase Coleman; David Tepper; George Soros; Philippe Laffont; Ray Dalio">Bill Ackman; Chase Coleman; David Tepper; George Soros; Philippe Laffont; Ray Dalio</div>
+<div class="bar-track">
+<div class="bar-fill" style="width:29.20%"></div>
+</div>
+</div>
+<div class="top-pct">25.69%</div>
+<div class="top-holders">6 holders<br>$4,449,828,376,000</div>
 </div>
 </div>
 </section>
