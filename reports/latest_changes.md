@@ -1,6 +1,6 @@
 # Latest 13F Guru Changes
 
-Generated: 2026-05-26 05:22 UTC
+Generated: 2026-05-26 05:24 UTC
 
 Note: 13F reports are delayed disclosures and usually omit shorts, many non-US holdings, cash, bonds, and some derivatives.
 
